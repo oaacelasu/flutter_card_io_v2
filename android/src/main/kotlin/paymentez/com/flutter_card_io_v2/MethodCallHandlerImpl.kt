@@ -17,7 +17,7 @@ import java.util.*
 
 const val MY_SCAN_REQUEST_CODE = 100
 
-class MethodCallHandlerImpl(private val flutterPluginBinding: FlutterPlugin.FlutterPluginBinding): MethodChannel.MethodCallHandler , ActivityResultListener{
+class MethodCallHandlerImpl: MethodChannel.MethodCallHandler , ActivityResultListener{
 
     private lateinit var mActivityPluginBinding : ActivityPluginBinding
     var mResult : MethodChannel.Result? = null
@@ -41,9 +41,9 @@ class MethodCallHandlerImpl(private val flutterPluginBinding: FlutterPlugin.Flut
 
     private fun handleScanCard(call: MethodCall, result: MethodChannel.Result) {
         mResult = result
-        this.mActivityPluginBinding.addActivityResultListener(this)
+        mActivityPluginBinding.addActivityResultListener(this)
 
-        val scanIntent = Intent(flutterPluginBinding.applicationContext, CardIOActivity::class.java)
+        val scanIntent = Intent(mActivityPluginBinding.activity, CardIOActivity::class.java)
         var requireExpiry = false
         if (call.hasArgument("requireExpiry")) {
             requireExpiry = call.argument("requireExpiry")?:false
