@@ -4,7 +4,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="502ab6cb-75d3-4133-b366-6db4af27f847" name="Default Changelist" comment="" />
+    <list default="true" id="502ab6cb-75d3-4133-b366-6db4af27f847" name="Default Changelist" comment="third commit" />
     <ignored path="$PROJECT_DIR$/.dart_tool/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
     <ignored path="$PROJECT_DIR$/.pub/" />
@@ -121,6 +121,11 @@
     </replaceStrings>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Oscar Acelas &lt;oacelas@paymentez.com&gt;" />
+      </list>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
@@ -272,7 +277,7 @@
       <window_info id="Capture Tool" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info anchor="bottom" id="Dart Analysis" weight="0.32993197" />
-      <window_info anchor="bottom" id="Run" visible="true" weight="0.5839002" />
+      <window_info anchor="bottom" id="Run" weight="0.5839002" />
       <window_info anchor="bottom" id="Logcat" weight="0.49659863" />
       <window_info anchor="bottom" id="TODO" weight="0.32993197" />
       <window_info anchor="bottom" id="Debug" />
@@ -290,6 +295,12 @@
       <window_info anchor="right" id="Palette&#9;" />
       <window_info anchor="right" id="Flutter Performance" />
     </layout>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="first commit" />
+    <MESSAGE value="second commit" />
+    <MESSAGE value="third commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="third commit" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/android/src/main/kotlin/paymentez/com/flutter_card_io_v2/FlutterCardIoV2Plugin.kt">
