@@ -40,10 +40,8 @@ class MethodCallHandlerImpl(private val flutterPluginBinding: FlutterPlugin.Flut
     }
 
     private fun handleScanCard(call: MethodCall, result: MethodChannel.Result) {
-        Log.wtf("ASDF", "handleScanCard")
         mResult = result
         this.mActivityPluginBinding.addActivityResultListener(this)
-        Log.wtf("ASDF", "mResult"+mResult.toString())
 
         val scanIntent = Intent(flutterPluginBinding.applicationContext, CardIOActivity::class.java)
         var requireExpiry = false
@@ -130,25 +128,18 @@ class MethodCallHandlerImpl(private val flutterPluginBinding: FlutterPlugin.Flut
         scanIntent.putExtra(CardIOActivity.EXTRA_KEEP_APPLICATION_THEME, keepApplicationTheme)
 
         // MY_SCAN_REQUEST_CODE is arbitrary and is only used within this activity.
-        Log.wtf("ASDF", "startActivityForResult1")
 
         mActivityPluginBinding.activity.startActivityForResult(scanIntent, MY_SCAN_REQUEST_CODE)
-        Log.wtf("ASDF", "startActivityForResult2")
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?): Boolean {
-        Log.wtf("ASDF", "onActivityResult1")
-        Log.wtf("ASDF", "mResult"+mResult.toString())
+
 
         if (requestCode == MY_SCAN_REQUEST_CODE) {
-            Log.wtf("ASDF", "onActivityResult2")
 
             if (data != null && data.hasExtra(CardIOActivity.EXTRA_SCAN_RESULT)) {
-                Log.wtf("ASDF", "onActivityResult3")
 
                 val scanResult: CreditCard = data.getParcelableExtra(CardIOActivity.EXTRA_SCAN_RESULT)
-                Log.wtf("ASDF", "onActivityResult4")
-                Log.wtf("ASDF", scanResult.toString())
 
                 val response: MutableMap<String, Any?> = HashMap()
                 response["cardholderName"] = scanResult.cardholderName
@@ -173,15 +164,11 @@ class MethodCallHandlerImpl(private val flutterPluginBinding: FlutterPlugin.Flut
                 response["expiryYear"] = scanResult.expiryYear
                 response["cvv"] = scanResult.cvv
                 response["postalCode"] = scanResult.postalCode
-                Log.wtf("ASDF", scanResult.toString())
-                Log.wtf("ASDF", response.toString())
-                Log.wtf("ASDF", mResult.toString())
 
                 mResult!!.success(response)
             } else {
                 mResult!!.success(null)
             }
-//            mResult = null
             return true
         }
         return false
