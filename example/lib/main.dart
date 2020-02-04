@@ -49,8 +49,8 @@ class _MyAppState extends State<MyApp> {
       details = Map<String, dynamic>.from(await FlutterCardIoV2.scanCard({
             "requireExpiry": true,
             "scanExpiry": true,
-            "requireCVV": false,
-            "requirePostalCode": false,
+            "requireCVV": true,
+            "requirePostalCode": true,
             "restrictPostalCodeToNumericOnly": false,
             "requireCardHolderName": true,
             "hideCardIOLogo": true,
