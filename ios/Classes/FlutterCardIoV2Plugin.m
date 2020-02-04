@@ -1,13 +1,15 @@
 #import "FlutterCardIoV2Plugin.h"
 #import "CardIO.h"
-#if __has_include(<flutter_card_io_v2/flutter_card_io_v2-Swift.h>)
-#import <flutter_card_io_v2/flutter_card_io_v2-Swift.h>
-#else
+#import <UIKit/UIKit.h>
+
+//#if __has_include(<flutter_card_io_v2/flutter_card_io_v2-Swift.h>)
+//#import <flutter_card_io_v2/flutter_card_io_v2-Swift.h>
+//#else
 // Support project import fallback if the generated compatibility header
 // is not copied when this plugin is created as a library.
 // https://forums.swift.org/t/swift-static-libraries-dont-copy-generated-objective-c-header/19816
-#import "flutter_card_io_v2-Swift.h"
-#endif
+//#import "flutter_card_io_v2-Swift.h"
+//#endif
 
 @implementation FlutterCardIoV2Plugin {
     FlutterResult _result;
@@ -63,7 +65,9 @@
         _scanViewController.disableManualEntryButtons = [_arguments objectForKey:@"suppressManualEntry"] ? [[_arguments objectForKey:@"suppressManualEntry"] boolValue] : false;
 
         [_viewController presentViewController:_scanViewController animated:YES completion:nil];
-    } else {
+    } else if([@"getPlatformVersion" isEqualToString:call.method]){
+     result([NSString stringWithFormat:@"%@ %@", @"IOS ", [[UIDevice currentDevice] systemVersion]]);
+    }else{
         result(FlutterMethodNotImplemented);
     }
 }
