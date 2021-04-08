@@ -139,10 +139,10 @@ class MethodCallHandlerImpl: MethodChannel.MethodCallHandler , ActivityResultLis
 
             if (data != null && data.hasExtra(CardIOActivity.EXTRA_SCAN_RESULT)) {
 
-                val scanResult: CreditCard = data.getParcelableExtra(CardIOActivity.EXTRA_SCAN_RESULT)
+                val scanResult: CreditCard? = data.getParcelableExtra(CardIOActivity.EXTRA_SCAN_RESULT)
 
                 val response: MutableMap<String, Any?> = HashMap()
-                response["cardholderName"] = scanResult.cardholderName
+                response["cardholderName"] = scanResult!!.cardholderName
                 response["cardNumber"] = scanResult.cardNumber
                 var cardType: String? = null
                 if (scanResult.cardType != CardType.UNKNOWN && scanResult.cardType != CardType.INSUFFICIENT_DIGITS) {
