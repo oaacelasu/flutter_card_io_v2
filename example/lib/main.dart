@@ -23,7 +23,7 @@ class _MyAppState extends State<MyApp> {
 
   // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> initPlatformState() async {
-    String platformVersion;
+    String? platformVersion;
     // Platform messages may fail, so we use a try/catch PlatformException.
     try {
       platformVersion = await FlutterCardIoV2.platformVersion;
@@ -37,7 +37,7 @@ class _MyAppState extends State<MyApp> {
     if (!mounted) return;
 
     setState(() {
-      _platformVersion = platformVersion;
+      _platformVersion = platformVersion ?? 'Unknown';
     });
   }
 
@@ -92,7 +92,7 @@ class _MyAppState extends State<MyApp> {
             children: <Widget>[
               Text('Running on: $_platformVersion\n'),
               Text('Scan result on: $_scanResult\n'),
-              RaisedButton(
+              ElevatedButton(
                 child: Text('scan'),
                 onPressed: () async => _scanCard(),
               )
